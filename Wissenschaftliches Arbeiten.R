@@ -27,3 +27,34 @@ daten$Embarked <- as.factor(daten$Embarked)
 
 #1c)
 daten$Pclass <- as.ordered(daten$Pclass)
+
+#1e)
+# Die Funktion gibt "Steuerbord" für die Passagiere mit ungeraden Kabinennummer und "Backboard" für die Passagiere mit geraden Kabinennummer zurueck. Ist die Kabinennummer unbekannt, liefert die Funktion eine NA.
+bord_type <- function(cabin) {
+  if (cabin == "") return(NA)
+  else {
+    cabin_number <- as.integer(substring(cabin, 2))
+    return(ifelse(cabin_number %% 2, "Steuerbord", "Backbord"))
+  }
+}
+
+# Hier wird die Funktion bord_type auf alle Eintraege in daten$Cabin angewendet.
+daten$Bord <- sapply(daten$Cabin, bord_type)
+
+
+# Die Funktion deck_type bestimmt den ersten Symbol in Kabinennummer, also die Deckzeichnung.
+deck_type <- function(cabin) {
+  if (cabin == "") return(NA)
+  else return(substring(cabin, 1, 1))
+}
+
+# Hier wird die Funktion deck_type auf alle Eintraege in daten$Cabin angewendet.
+daten$Deck <- sapply(daten$Cabin, deck_type)
+
+#1f)
+# Die Variablen PassengerId, Name, Ticket und Cabin aus dem Datensatz entfernen
+daten$PassengerId <- NULL
+daten$Name <- NULL
+daten$Ticket <- NULL
+daten$Cabin <- NULL
+
