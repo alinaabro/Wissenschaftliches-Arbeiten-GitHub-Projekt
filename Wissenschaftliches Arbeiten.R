@@ -20,25 +20,8 @@ daten$Anrede<- gsub("Major", "Mr", daten$Anrede)
 daten$Anrede[760]<- "Mrs"
 table(daten$Anrede)
 
-
-
-#Fuer die Misters
-MittelwertMr <- mean(daten$Age[daten$Anrede == "Mr"], na.rm = T)
-MistersUnbekannt <- which(daten$Anrede[which(is.na(daten$Age))] == "Mr")
-daten$Age[MistersUnbekannt] <- MittelwertMr
-
-#Fuer die Misses
-MittelwertMrs <- mean(daten$Age[daten$Anrede == "Mrs"], na.rm = T)
-MissesUnbekannt <- which(daten$Anrede[which(is.na(daten$Age))] == "Mrs")
-daten$Age[MissesUnbekannt] <- MittelwertMrs
-
-#Fuer die Miss
-MittelwertMs <- mean(daten$Age[daten$Anrede == "Ms"], na.rm = T)
-MissUnbekannt <- which(daten$Anrede[which(is.na(daten$Age))] == "Ms")
-daten$Age[MissUnbekannt] <- MittelwertMs
-
-#Fuer die Master 
-MittelwertMaster <- mean(daten$Age[daten$Anrede == "Master"], na.rm = T)
-MasterUnbekannt <- which(daten$Anrede[which(is.na(daten$Age))] == "Master")
-daten$Age[MasterUnbekannt] <- MittelwertMaster
-daten$Age
+#1b)
+daten$Survived <-  as.factor(daten$Survived)
+daten$Sex <- as.factor(daten$Sex)
+daten$Embarked <- as.factor(daten$Embarked)
+daten$Pclass <- as.ordered(daten$Pclass)
