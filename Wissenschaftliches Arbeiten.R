@@ -24,4 +24,6 @@ table(daten$Anrede)
 daten$Survived <-  as.factor(daten$Survived)
 daten$Sex <- as.factor(daten$Sex)
 daten$Embarked <- as.factor(daten$Embarked)
+
+#1c)
 daten$Pclass <- as.ordered(daten$Pclass)
