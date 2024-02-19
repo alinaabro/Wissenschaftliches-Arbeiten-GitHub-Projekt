@@ -140,4 +140,15 @@ daten <- read.csv("~/Documents/GitHub/Titanic Data/titanic.csv")
 # Anwenden der Funktion auf Datensatz 
 ergebnis <- erstelleHaeufigkeitstabelleMitModusUndEntropie(daten$)
 
+#2c)
+bivariate_stat <- function(variable1, variable2) {
+  kontingenztabelle <- table(variable1, variable2)
+  chiquadrat_test <- chisq.test(kontingenztabelle)
+  
+  cat("Kontingenztabelle:\n")
+  print(kontingenztabelle)
+  
+  cat("\nChi-Quadrat-Test:\n")
+  print(chiquadrat_test)
+}
 
