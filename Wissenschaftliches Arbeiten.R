@@ -91,4 +91,32 @@ deskriptive_stat <- function(daten) {
   cat("1st Quartile:", quartiles[1], "\n")
   cat("3rd Quartile:", quartiles[2], "\n")
 }
+# Aufgabe 2 (ii)
+# Empirische Entropie berechnen
+entropieBerechnen <- function(relH) {
+  freq <- relH / 100 
+  k <- length(freq)
+  entropie <- sum(freq * log(1/freq)) / log(k)
+  return(entropie)
+}
+
+# Funktion zur Erstellung der Häufigkeitstabelle mit Modus und Entropie
+Haeufigkeitstabelle <- function(katVar) {
+  tab <- table(katVar)
+  relH <- prop.table(tab) * 100
+  ergebnis <- data.frame(
+    AbsH = as.integer(tab),
+    RelH = round(relH, 2),
+    Modus = ifelse(tab == max(tab), "Ja", "Nein")
+  )
+  ent <- entropieBerechnen(relH)
+  ergebnis$RelH.katVar <- NULL 
+  print(ergebnis)
+  cat("Empirische Entropie:", ent, "\n")
+  return(list(Tab = ergebnis, Ent = ent))
+}
+
+# Funktion anwenden(auf gewünschten Wert ändern)
+ergebnis <- Haeufigkeitstabelle(daten$Anrede)
+
 
