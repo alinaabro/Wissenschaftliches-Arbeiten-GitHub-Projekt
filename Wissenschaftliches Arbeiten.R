@@ -140,4 +140,4 @@ daten <- read.csv("~/Documents/GitHub/Titanic Data/titanic.csv")
 # Anwenden der Funktion auf Datensatz 
 ergebnis <- erstelleHaeufigkeitstabelleMitModusUndEntropie(daten$)
 
-
+#Test
