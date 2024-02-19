@@ -92,3 +92,52 @@ deskriptive_stat <- function(daten) {
   cat("3rd Quartile:", quartiles[2], "\n")
 }
 
+#Aufgabe 2b)
+# Berechnung der empirischen Entropie
+berechneEntropie <- function(relativeHaeufigkeiten) {
+  # Berechne die Wahrscheinlichkeiten als Anteil von 100
+  wahrscheinlichkeiten <- relativeHaeufigkeiten / 100
+  
+  # Anzah Kategorien
+  k <- length(wahrscheinlichkeiten)
+  
+  # Berechne die Entropie
+  entropie <- sum(wahrscheinlichkeiten * log(1/wahrscheinlichkeiten)) / log(k)
+  
+  # Gib die Entropie zurück
+  return(entropie)
+}
+
+erstelleHaeufigkeitstabelleMitModusUndEntropie <- function(kategorialeVariable) {
+  # Erstelle die Häufigkeitstabelle
+  haeufigkeitstabelle <- table(kategorialeVariable)
+  
+  # Berechne die relativen Häufigkeiten
+  relativeHaeufigkeiten <- prop.table(haeufigkeitstabelle) * 100
+  
+  # Kombiniere absolute und relative Häufigkeiten in einem Datenrahmen
+  ergebnisTabelle <- data.frame(
+    Kategorie = names(haeufigkeitstabelle),
+    Haeufigkeit = as.integer(haeufigkeitstabelle),
+    RelativeHaeufigkeit = round(relativeHaeufigkeiten, 2),
+    Modus = ifelse(haeufigkeitstabelle == max(haeufigkeitstabelle), "Ja", "Nein")
+  )
+  
+  # Berechne die Entropie für die kategoriale Variable
+  entropie <- berechneEntropie(relativeHaeufigkeiten)
+  
+  # Ausgabe der Häufigkeitstabelle und der Entropie
+  print(ergebnisTabelle)
+  cat("Empirische Entropie der kategorialen Variable:", entropie, "\n")
+  
+  # Rückgabe der Häufigkeitstabelle und der Entropie
+  return(list(Tabelle = ergebnisTabelle, Entropie = entropie))
+}
+
+# Laden der Daten
+daten <- read.csv("~/Documents/GitHub/Titanic Data/titanic.csv")
+
+# Anwenden der Funktion auf Datensatz 
+ergebnis <- erstelleHaeufigkeitstabelleMitModusUndEntropie(daten$)
+
+
