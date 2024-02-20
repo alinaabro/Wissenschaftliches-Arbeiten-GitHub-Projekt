@@ -28,6 +28,35 @@ daten$Embarked <- as.factor(daten$Embarked)
 #1c)
 daten$Pclass <- as.ordered(daten$Pclass)
 
+#1d)
+
+# Berechnet das Mittelalter von Personen mit Anrede x (ohne Beruecksichtigung von NAs)
+mean_among <- function(x) {
+  return(mean(daten$Age[daten$Anrede == x], na.rm = TRUE))
+}
+
+# Erstellt einen Vektor mit Mittelaltern, gruppiert bei Anrede
+means <- sapply(c("Master", "Mr", "Mrs", "Ms"), mean_among)
+names(means) <- c("Master", "Mr", "Mrs", "Ms")
+means
+# Master        Mr       Mrs        Ms 
+# 4.472222 32.966427 35.991071 21.825503 
+
+# Wenn bei i-tem Element in daten$Age NA steht, gibt ein entsprechendes Mittelalter zurueck
+# Wenn i-tes Element kein NA ist, dann gibt das i-te Element wieder zurueck
+replace_NA_with_mean <- function(i) {
+  if (is.na(daten$Age[i])) {
+    anrede <- daten$Anrede[i]
+    return(means[anrede])
+  }
+  else return(daten$Age[i])
+}
+
+# Anwendet die Funktion replace_NA_with_mean auf alle Elemente von daten$Age und ersetzt NAs mit Mittelwerte aus means
+for (i in 1:nrow(daten)) {
+  daten$Age[i] <- replace_NA_with_mean(i)
+}
+
 #1e)
 # Die Funktion gibt "Steuerbord" für die Passagiere mit ungeraden Kabinennummer und "Backboard" für die Passagiere mit geraden Kabinennummer zurueck. Ist die Kabinennummer unbekannt, liefert die Funktion eine NA.
 bord_type <- function(cabin) {
