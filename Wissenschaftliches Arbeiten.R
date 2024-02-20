@@ -92,52 +92,31 @@ deskriptive_stat <- function(daten) {
   cat("3rd Quartile:", quartiles[2], "\n")
 }
 
-#Aufgabe 2b)
-# Berechnung der empirischen Entropie
-berechneEntropie <- function(relativeHaeufigkeiten) {
-  # Berechne die Wahrscheinlichkeiten als Anteil von 100
-  wahrscheinlichkeiten <- relativeHaeufigkeiten / 100
-  
-  # Anzah Kategorien
-  k <- length(wahrscheinlichkeiten)
-  
-  # Berechne die Entropie
-  entropie <- sum(wahrscheinlichkeiten * log(1/wahrscheinlichkeiten)) / log(k)
-  
-  # Gib die Entropie zurück
+# Aufgabe 2 (ii)
+# Empirische Entropie berechnen
+entropieBerechnen <- function(relH) {
+  freq <- relH / 100 
+  k <- length(freq)
+  entropie <- sum(freq * log(1/freq)) / log(k)
   return(entropie)
 }
 
-erstelleHaeufigkeitstabelleMitModusUndEntropie <- function(kategorialeVariable) {
-  # Erstelle die Häufigkeitstabelle
-  haeufigkeitstabelle <- table(kategorialeVariable)
-  
-  # Berechne die relativen Häufigkeiten
-  relativeHaeufigkeiten <- prop.table(haeufigkeitstabelle) * 100
-  
-  # Kombiniere absolute und relative Häufigkeiten in einem Datenrahmen
-  ergebnisTabelle <- data.frame(
-    Kategorie = names(haeufigkeitstabelle),
-    Haeufigkeit = as.integer(haeufigkeitstabelle),
-    RelativeHaeufigkeit = round(relativeHaeufigkeiten, 2),
-    Modus = ifelse(haeufigkeitstabelle == max(haeufigkeitstabelle), "Ja", "Nein")
+# Funktion zur Erstellung der Häufigkeitstabelle mit Modus und Entropie
+Haeufigkeitstabelle <- function(katVar) {
+  tab <- table(katVar)
+  relH <- prop.table(tab) * 100
+  ergebnis <- data.frame(
+    AbsH = as.integer(tab),
+    RelH = round(relH, 2),
+    Modus = ifelse(tab == max(tab), "Ja", "Nein")
   )
-  
-  # Berechne die Entropie für die kategoriale Variable
-  entropie <- berechneEntropie(relativeHaeufigkeiten)
-  
-  # Ausgabe der Häufigkeitstabelle und der Entropie
-  print(ergebnisTabelle)
-  cat("Empirische Entropie der kategorialen Variable:", entropie, "\n")
-  
-  # Rückgabe der Häufigkeitstabelle und der Entropie
-  return(list(Tabelle = ergebnisTabelle, Entropie = entropie))
+  ent <- entropieBerechnen(relH)
+  ergebnis$RelH.katVar <- NULL 
+  print(ergebnis)
+  cat("Empirische Entropie:", ent, "\n")
+  return(list(Tab = ergebnis, Ent = ent))
 }
 
-# Laden der Daten
-daten <- read.csv("~/Documents/GitHub/Titanic Data/titanic.csv")
-
-# Anwenden der Funktion auf Datensatz 
-ergebnis <- erstelleHaeufigkeitstabelleMitModusUndEntropie(daten$)
-
+# Funktion anwenden für bestimmte katogoriale Variable
+ergebnis <- Haeufigkeitstabelle(daten$Anrede)
 
