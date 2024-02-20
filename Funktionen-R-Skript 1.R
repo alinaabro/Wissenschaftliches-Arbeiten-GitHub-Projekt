@@ -55,7 +55,5 @@ Haeufigkeitstabelle <- function(katVar) {
   return(list(Tab = ergebnis, Ent = ent))
 }
 
-# Funktion anwenden(auf gewünschten Wert ändern)
-ergebnis <- Haeufigkeitstabelle(daten$Anrede)
 
 
