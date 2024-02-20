@@ -32,12 +32,15 @@ deskriptive_stat <- function(daten) {
 }
 # Aufgabe 2 (ii)
 # Empirische Entropie berechnen
-entropieBerechnen <- function(relH) {
-  freq <- relH / 100 
-  k <- length(freq)
-  entropie <- sum(freq * log(1/freq)) / log(k)
-  return(entropie)
-}
+#entropieBerechnen <- function(relH) {
+#  freq <- relH / 100 
+#  k <- length(freq)
+#  entropie <- sum(freq * log(1/freq)) / log(k)
+#  return(entropie)
+#}
+
+#Installiere Paket fuer das Berechnen der Entropie
+install.packages("entropy")
 
 # Funktion zur Erstellung der Häufigkeitstabelle mit Modus und Entropie
 Haeufigkeitstabelle <- function(katVar) {
@@ -48,7 +51,7 @@ Haeufigkeitstabelle <- function(katVar) {
     RelH = round(relH, 2),
     Modus = ifelse(tab == max(tab), "Ja", "Nein")
   )
-  ent <- entropieBerechnen(relH)
+  ent <- entropy::entropy(relH)
   ergebnis$RelH.katVar <- NULL 
   print(ergebnis)
   cat("Empirische Entropie:", ent, "\n")
