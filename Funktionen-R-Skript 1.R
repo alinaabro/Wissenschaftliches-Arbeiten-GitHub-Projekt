@@ -86,6 +86,11 @@ bivariate_stat <- function(variable1, variable2) {
   print(chiquadrat_test)
 }
 
+#2(v) Erstellt einen Mosaikplot der gegebenen 3 Merkmale
+visualisierung <- function(merkmal1, merkmal2, merkmal3, m1name=NA, m2name=NA, m3name=NA){
+   mosaicplot(table(merkmal1,merkmal2,merkmal3), main=m3name, xlab=m1name, ylab=m2name)
+}
+
 # 2.vi
 
 # Die Funktion plot_grouped_histogram erstellt ein Histogramm der Variable metrVar, das nach der Variable katVar gruppiert ist.
