@@ -1,10 +1,11 @@
 rm(list=ls())
 #1)a) 
 #Hier wurden die Anreden extrahiert und sortiert 
-#An dieser Stelle soll der Datensatz mit der Funktion read.csv(...) 
+#An dieser Stelle soll der Datensatz mit der Funktion read.csv(...) mit indivuellem path eingelesen werden
 daten <- read.csv("/Users/hasanabd-alkareem/Downloads/titanic")
-#mit indivuellem path eingelesen werden
+#Hier wurden die Anreden extrahiert und sortiert
 daten$Anrede<-gsub(".*, (\\w+)\\..*", "\\1", daten$Name)
+# gsub dient dem Ausstausch von den Anreden
 daten$Anrede <- gsub("Miss", "Ms", daten$Anrede)
 daten$Anrede <- gsub("Mlle", "Ms", daten$Anrede)
 daten$Anrede <- gsub("Lady", "Mrs", daten$Anrede)
