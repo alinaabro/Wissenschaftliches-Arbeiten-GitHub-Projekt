@@ -47,6 +47,24 @@ Haeufigkeitstabelle <- function(katVar) {
   cat("Empirische Entropie:", ent, "\n")
   return(list(Tab = ergebnis, Ent = ent))
 }
+#2(iii)
+bivariate_stat <- function(variable1, variable2) {
+  kontingenztabelle <- table(variable1, variable2)
+  chiquadrat_test <- chisq.test(kontingenztabelle)
+  
+  cat("Kontingenztabelle:\n")
+  print(kontingenztabelle)
+  
+  cat("\nChi-Quadrat-Test:\n")
+  print(chiquadrat_test)
+}
+
+#2(v) Erstellt einen Mosaikplot der gegebenen 3 Merkmale
+#visualisierung(merkmal1, merkmal2, merkmal3, "NameMerkmal1", "NameMerkmal2", "NameMerkmal3")
+visualisierung <- function(merkmal1, merkmal2, merkmal3, m1name=NA, m2name=NA, m3name=NA){
+   mosaicplot(table(merkmal1,merkmal2,merkmal3), main=m3name, xlab=m1name, ylab=m2name)
+}
+
 #2iv)
 #Maße fuer den Zusammenhang einer binären und einer 
 #metrisch skalierten Variable
@@ -67,25 +85,7 @@ katbinom <- function(x,y, na.rm = FALSE){
   }
 }
 
-#2(iii)
-bivariate_stat <- function(variable1, variable2) {
-  kontingenztabelle <- table(variable1, variable2)
-  chiquadrat_test <- chisq.test(kontingenztabelle)
-  
-  cat("Kontingenztabelle:\n")
-  print(kontingenztabelle)
-  
-  cat("\nChi-Quadrat-Test:\n")
-  print(chiquadrat_test)
-}
-
-#2(v) Erstellt einen Mosaikplot der gegebenen 3 Merkmale
-#visualisierung(merkmal1, merkmal2, merkmal3, "NameMerkmal1", "NameMerkmal2", "NameMerkmal3")
-visualisierung <- function(merkmal1, merkmal2, merkmal3, m1name=NA, m2name=NA, m3name=NA){
-   mosaicplot(table(merkmal1,merkmal2,merkmal3), main=m3name, xlab=m1name, ylab=m2name)
-}
-  
-# 2.vi
+#2.vi
 
 # Die Funktion plot_grouped_histogram erstellt ein Histogramm der Variable metrVar, das nach der Variable katVar gruppiert ist.
 # Mit legend_names kann man die Legendenbeschriftungen setzen
