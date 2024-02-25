@@ -1,6 +1,5 @@
 rm(list=ls())
-#1)a) 
-#Hier wurden die Anreden extrahiert und sortiert 
+#1)a)  
 #An dieser Stelle soll der Datensatz mit der Funktion read.csv(...) mit indivuellem path eingelesen werden
 daten <- read.csv("/Users/hasanabd-alkareem/Downloads/titanic")
 #Hier wurden die Anreden extrahiert und sortiert
