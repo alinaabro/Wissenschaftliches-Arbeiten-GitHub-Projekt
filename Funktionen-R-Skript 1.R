@@ -63,9 +63,14 @@ bivariate_stat <- function(variable1, variable2) {
 #Maße fuer den Zusammenhang einer binären und einer 
 #metrisch skalierten Variable
 katbinom <- function(x,y, na.rm = FALSE){
+  #Faktorisiere beide Variablen zu einer numerischen
+  #um die Funktion cor(...) anzwuwenden
   x <- as.numeric(x)
   y <- as.numeric(y)
+  #Unterscheide, ob Nutzer vollstaendige oder auch unvollstaendige
+  #Beobachtungen beruecksichtigen will
   if(na.rm == TRUE){
+    #Stelle die Korrelationsmaße in einem Dataframe dar
     Tabelle <- data.frame(Pearson = cor(x,y,method = "pearson", use = "complete.obs"),
                           Kendall =  cor(x,y,method = "kendall", use = "complete.obs"),
                           Spearman = cor(x,y,method = "spearman", use = "complete.obs"))
