@@ -59,7 +59,8 @@ for (i in 1:nrow(daten)) {
 }
 
 #1e)
-# Die Funktion gibt "Steuerbord" für die Passagiere mit ungeraden Kabinennummer und "Backboard" für die Passagiere mit geraden Kabinennummer zurueck. Ist die Kabinennummer unbekannt, liefert die Funktion eine NA.
+# Die Funktion gibt "Steuerbord" für die Passagiere mit ungeraden Kabinennummer und "Backboard" für die Passagiere mit geraden Kabinennummer zurueck. 
+#Ist die Kabinennummer unbekannt, liefert die Funktion eine NA.
 bord_type <- function(cabin) {
   if (cabin == "") return(NA)
   else {
