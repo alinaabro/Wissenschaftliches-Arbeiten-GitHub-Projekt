@@ -3,11 +3,13 @@
 entropieBerechnen <- function(relH){
   freq <- relH / 100
   k <- length(freq)
+  #Berechne Entropie nach Definition
   entropie <- sum(freq * log(1/freq)) / log(k)
   return(entropie)
 }
 
-#Hilfefunktion fuer das Berechnen von Min und Max
+#Hilfefunktion fuer das Berechnen von dem Minimum
+#der Beobachtungen
 minimum <- function(x){
   minimum <- x[1]
   n <- length(x)
@@ -17,6 +19,7 @@ minimum <- function(x){
   return(minimum)
 }
 
+#Und fuer das Maximum der Beobachtungen
 maximum <- function(x){
   maximum <- x[1]
   n <- length(x)
