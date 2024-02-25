@@ -140,3 +140,7 @@ plot_grouped_histogram <- function(metrVar, katVar, legend_names = NA, data = da
   else legend("topright", legend = categories, fill = colors)
 }
 
+# Erstellt einen Boxplot
+mein_boxplot <- function(datensatz) {
+  boxplot(datensatz, main="Boxplot", ylab="Werte")
+}
