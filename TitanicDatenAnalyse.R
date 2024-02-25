@@ -53,3 +53,8 @@ visualisierung(daten$Survived, daten$Sex, daten$Pclass,"Survived","Sex","Pclass"
 plot_grouped_histogram("Fare", "Survived", legend_names = c("Tod", "Lebendig"), main = "Preis nach Überleben")
 plot_grouped_histogram("Age", "Pclass", legend_names = c("Class1", "Class2", "class3"), main = "Alter nach Klasse")
 plot_grouped_histogram("Age", "Survived", legend_names = c("Tod", "Lebendig"), main = "Alter nach Überleben")
+
+# Erstellt Boxplot
+mein_boxplot(daten$Age)
+mein_boxplot(daten$SibSp)
+mein_boxplot(daten$Fare)
