@@ -10,9 +10,11 @@ Dieses Projekt konzentriert sich auf die Analyse des Titanic-Datensatzes, der In
 
 Das Repository ist wie folgt organisiert:
 
-Daten: Der Ordner enthält den Titanic-Datensatz, der als Grundlage für unsere Analysen dient.
-RScripts: die für die Datenaufbereitung, Analysefunktionen für deskriptive Statistiken und die Erstellung von Visualisierungen verwendet werden.
-Wiki: Ein ausführlicher Bericht über die Ergebnisse und die angewandten Methoden ist im Wiki dieses Repositories zu finden.
+[Datensatzvorbereitung.R](https://github.com/alinaabro/Wissenschaftliches-Arbeiten-GitHub-Projekt/blob/main/Datensatzvorbereitung.R): Die Vorbereitung der Daten für die Analyse erfolgt in dieser Datei.
+[Funktion-R-Skript 1.R](https://github.com/alinaabro/Wissenschaftliches-Arbeiten-GitHub-Projekt/blob/main/Funktionen-R-Skript%201.R): In dieser Datei sind die Funktionen enthalten, die dazu dienen den Datansatz zu Analysieren.
+[Titanic.csv](https://github.com/alinaabro/Wissenschaftliches-Arbeiten-GitHub-Projekt/blob/main/titanic.csv):Diese Datei enthält den noch nicht aufbereiteten Titanic-Datensatz, der als Grundlage für unsere Analysen dient.
+[Funktion-R-Skript 2.R](https://github.com/alinaabro/Wissenschaftliches-Arbeiten-GitHub-Projekt/blob/main/Funktionen-R-Skript%202.R): In dieser Datei sind Helfer-Funktionen enthalten die Anwendung in den Funktionen aus dem ersten RSkript finden.
+[Wiki](https://github.com/alinaabro/Wissenschaftliches-Arbeiten-GitHub-Projekt/wiki): Ein ausführlicher Bericht über die Ergebnisse und die angewandten Methoden ist im Wiki dieses Repositories zu finden.
 
 ## Hauptmerkmale
 
