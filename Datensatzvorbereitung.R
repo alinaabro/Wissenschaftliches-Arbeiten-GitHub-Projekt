@@ -23,11 +23,15 @@ daten$Anrede[760]<- "Mrs"
 table(daten$Anrede)
 
 #1b)
+#Benutze die Funktion as.factor(...) um 
+#die Merkmale zu faktorisieren
 daten$Survived <-  as.factor(daten$Survived)
 daten$Sex <- as.factor(daten$Sex)
 daten$Embarked <- as.factor(daten$Embarked)
 
 #1c)
+#Benutze die Funktion as.ordered(...)
+#um das Merkmal geordnet zu faktorisieren
 daten$Pclass <- as.ordered(daten$Pclass)
 
 #1d)
